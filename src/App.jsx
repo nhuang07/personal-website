@@ -15,7 +15,6 @@ function App() {
           "linear-gradient(to bottom right, #0f172a, #1e293b, #0f172a)",
       }}
     >
-      {/* Animated background blobs */}
       <div
         className="fixed inset-0 pointer-events-none overflow-hidden"
         style={{ zIndex: 0 }}
@@ -25,9 +24,9 @@ function App() {
           style={{
             top: "25%",
             left: "25%",
-            width: "500px",
-            height: "500px",
-            background: "rgba(59, 130, 246, 0.2)",
+            width: "700px",
+            height: "700px",
+            background: "rgba(59, 130, 246, 0.35)",
             borderRadius: "50%",
             filter: "blur(120px)",
           }}
@@ -37,9 +36,9 @@ function App() {
           style={{
             top: "33%",
             right: "25%",
-            width: "600px",
-            height: "600px",
-            background: "rgba(168, 85, 247, 0.2)",
+            width: "800px",
+            height: "800px",
+            background: "rgba(168, 85, 247, 0.35)",
             borderRadius: "50%",
             filter: "blur(120px)",
           }}
@@ -49,9 +48,9 @@ function App() {
           style={{
             bottom: "25%",
             left: "50%",
-            width: "550px",
-            height: "550px",
-            background: "rgba(99, 102, 241, 0.15)",
+            width: "750px",
+            height: "750px",
+            background: "rgba(99, 102, 241, 0.3)",
             borderRadius: "50%",
             filter: "blur(120px)",
           }}
@@ -64,14 +63,14 @@ function App() {
             transform: translate(0, 0) scale(1);
           }
           33% {
-            transform: translate(100px, -100px) scale(1.2);
+            transform: translate(150px, -150px) scale(1.4);
           }
           66% {
-            transform: translate(-80px, 80px) scale(0.8);
+            transform: translate(-120px, 120px) scale(0.7);
           }
         }
         .animate-blob {
-          animation: blob 25s infinite ease-in-out;
+          animation: blob 18s infinite ease-in-out;
         }
         .animation-delay-2000 {
           animation-delay: 2s;
