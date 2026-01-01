@@ -22,11 +22,11 @@ export default function Navbar() {
           : "bg-slate-900/80 border-b border-blue-500/20"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+      <div className="max-w-6xl mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center">
+        <h1 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
           NH
         </h1>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-3 md:gap-6 text-sm md:text-base">
           <button
             onClick={() => scrollToSection("about")}
             className="text-gray-300 hover:text-blue-400 transition-all duration-300 hover:scale-110"
@@ -58,11 +58,11 @@ export default function Navbar() {
           >
             Resume
           </a>
-          <div className="flex items-center gap-3 ml-2 pl-3 border-l border-gray-700">
+          <div className="flex items-center gap-2 md:gap-3 md:ml-2 md:pl-3 md:border-l border-gray-700">
             <a
               href="https://github.com/nhuang07"
               target="_blank"
-              className="text-2xl hover:text-blue-400 transition-all duration-300 hover:scale-110"
+              className="text-xl md:text-2xl hover:text-blue-400 transition-all duration-300 hover:scale-110"
               title="GitHub"
             >
               <FaGithub />
