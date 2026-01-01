@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import Navbar from "./components/navbar.jsx";
-import About from "./components/about.jsx";
+import Navbar from "./components/Navbar.jsx";
+import About from "./components/About.jsx";
 import Skills from "./components/Skills.jsx";
 import Projects from "./components/Projects.jsx";
 import Contact from "./components/Contact.jsx";
