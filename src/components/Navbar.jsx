@@ -52,7 +52,7 @@ export default function Navbar() {
             Contact
           </button>
           <a
-            href="/Nicholas_Huang_Resume_Final.pdf"
+            href="/Nicholas_Huang_Resume.pdf"
             target="_blank"
             className="text-gray-300 hover:text-blue-400 transition-all duration-300 hover:scale-110"
           >

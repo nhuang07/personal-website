@@ -40,7 +40,7 @@ export default function Skills() {
         icon: "/logo_photos/css.svg",
       },
     ],
-    "Tools & Platforms": [
+    "Developer Tools & Platforms": [
       { name: "VS Code", icon: "/logo_photos/vscode.svg" },
       { name: "Git", icon: "/logo_photos/git.svg" },
       {
@@ -49,12 +49,20 @@ export default function Skills() {
       },
       { name: "IntelliJ", icon: "/logo_photos/intellij.svg" },
       { name: "Jupyter Notebook", icon: "/logo_photos/jupyter.png" },
+      { name: "Unity", icon: "/logo_photos/unity.png" },
+      { name: "Postman", icon: "/logo_photos/postman.svg" },
+      { name: "MongoDB", icon: "/logo_photos/mongodb.webp" },
     ],
     "Frameworks & Libraries": [
-      { name: "React", icon: "/logo_photos/react.svg" },
+      { name: "React.js", icon: "/logo_photos/react.svg" },
       { name: "Node.js", icon: "/logo_photos/node.png" },
-      { name: "Unity", icon: "/logo_photos/unity.png" },
-      { name: "Tailwind", icon: "/logo_photos/tailwind.png" },
+      { name: "Express.js", icon: "/logo_photos/express.svg" },
+      { name: "Next.js", icon: "/logo_photos/next.png" },
+      { name: "TailwindCSS", icon: "/logo_photos/tailwind.png" },
+      { name: "Tidymodels", icon: "/logo_photos/tidymodels.png" },
+      { name: "Tidyverse", icon: "/logo_photos/tidyverse.png" },
+      { name: "dplyr", icon: "/logo_photos/dplyr.webp" },
+      { name: "ggplot2", icon: "/logo_photos/ggplot2.png" },
     ],
   };
 
