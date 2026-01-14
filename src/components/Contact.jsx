@@ -39,7 +39,7 @@ export default function Contact() {
               <img
                 src="/logo_photos/instagram.svg"
                 alt="instagram-logo"
-                className="w-8 h-8 md:h-10 md:w-10"
+                className="w-6 h-6 md:h-8 md:w-8"
               />
             </span>
             <span className="text-lg">@nicholashhhhhh</span>
