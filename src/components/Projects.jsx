@@ -59,6 +59,29 @@ export default function Projects() {
       live: "https://dermai-gray.vercel.app/",
     },
     {
+      title: "Wedoo",
+      description:
+        "Built for nwHacks 2026, Wedoo is a habit tracker you can share with your friends. Either AI can generate tasks for you, or you can create tasks for yourself, and you and your friends work together to take care of your own Wedoo by completing your tasks on time.",
+      tech: [
+        "React Native",
+        "Expo",
+        "Typescript",
+        "Supabase",
+        "Google Gemini API",
+        "Expo Push Notifications",
+      ],
+      award: null,
+      image: (
+        <img
+          src="/project_photos/wedoo.jpg"
+          alt="Wedoo"
+          className="w-full h-full object-cover"
+        />
+      ),
+      github: "https://github.com/nhuang07/wedoo",
+      live: "https://devpost.com/software/wedoo",
+    },
+    {
       title: "MindMedVR",
       description:
         "VR meditation game using EEG brainwave data, designed to help healthcare professionals improve focus. Detects alpha, delta, and beta waves in real-time to dynamically adjust gameplay based on stress levels.",
