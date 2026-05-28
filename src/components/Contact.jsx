@@ -1,6 +1,13 @@
 import useScrollAnimation from "./Scroll";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
+
+const wrap = {
+  maxWidth: "1100px",
+  margin: "0 auto",
+  padding: "0 3rem",
+};
+
 const contactItems = [
   {
     label: "nicholashuang0707@gmail.com",
@@ -25,12 +32,13 @@ export default function Contact() {
         id="contact"
         ref={ref}
         style={{
-          padding: "3.5rem 2rem 5rem",
+          padding: "4rem 0 5rem",
           opacity: isVisible ? 1 : 0,
           transform: isVisible ? "translateY(0)" : "translateY(16px)",
           transition: "opacity 0.7s, transform 0.7s",
         }}
       >
+        <div style={wrap}>
         <div
           style={{
             fontSize: "11px",
@@ -88,11 +96,12 @@ export default function Contact() {
             </div>
           ))}
         </div>
+        </div>
       </section>
 
       <footer
         style={{
-          padding: "1.5rem 2rem",
+          padding: "1.5rem 3rem",
           borderTop: "1px solid #1a1a1a",
           display: "flex",
           justifyContent: "space-between",

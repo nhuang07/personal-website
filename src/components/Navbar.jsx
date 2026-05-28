@@ -24,7 +24,7 @@ export default function Navbar() {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: "1.1rem 2rem",
+        padding: "1.1rem 3rem",
         borderBottom: "1px solid #1a1a1a",
         background: scrolled ? "rgba(12,12,12,0.97)" : "rgba(12,12,12,0.85)",
         backdropFilter: "blur(8px)",

@@ -45,6 +45,13 @@ const skillGroups = [
   },
 ];
 
+
+const wrap = {
+  maxWidth: "1100px",
+  margin: "0 auto",
+  padding: "0 3rem",
+};
+
 function SkillChip({ name, icon }) {
   return (
     <div
@@ -79,19 +86,23 @@ export default function Skills() {
       id="skills"
       ref={ref}
       style={{
-        padding: "3.5rem 2rem",
+        padding: "4rem 0",
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateY(0)" : "translateY(16px)",
         transition: "opacity 0.7s, transform 0.7s",
       }}
     >
+      <div style={wrap}>
       <div
         style={{
-          fontSize: "11px",
-          color: "#444",
-          letterSpacing: "0.12em",
+          fontSize: "13px",
+          fontWeight: 500,
+          color: "#888",
+          letterSpacing: "0.1em",
           textTransform: "uppercase",
-          marginBottom: "2rem",
+          marginBottom: "3rem",
+          paddingBottom: "1rem",
+          borderBottom: "1px solid #1e1e1e",
         }}
       >
         skills
@@ -120,6 +131,7 @@ export default function Skills() {
             </div>
           </div>
         ))}
+      </div>
       </div>
     </section>
   );
