@@ -62,7 +62,7 @@ export default function Navbar() {
         ))}
 
         <a
-          href="/Updated_Nicholas_Huang_Resume.pdf"
+          href="/Updated_Resume_Nicholas_Huang.pdf"
           target="_blank"
           rel="noopener noreferrer"
           style={{
