@@ -1,8 +1,7 @@
+import { useState, useEffect, useRef } from "react";
 import useScrollAnimation from "./Scroll";
-import { useState, useEffect } from "react";
 
-// Typewriter effect hook
-function useTypewriter(text, trigger, speed = 80, delay = 0) {
+function useTypewriter(text, trigger, speed = 70, delay = 300) {
   const [displayText, setDisplayText] = useState("");
   const [isComplete, setIsComplete] = useState(false);
 
@@ -27,7 +26,6 @@ function useTypewriter(text, trigger, speed = 80, delay = 0) {
           setIsComplete(true);
         }
       }, speed);
-
       return () => clearInterval(interval);
     }, delay);
 
@@ -40,90 +38,198 @@ function useTypewriter(text, trigger, speed = 80, delay = 0) {
 export default function About() {
   const [ref, isVisible] = useScrollAnimation();
   const { displayText: typedName, isComplete: nameComplete } = useTypewriter(
-    "hey, im nick!",
-    isVisible,
-    70,
-    300 // Start after initial fade
+    "hey, i'm nick.",
+    isVisible
   );
 
   return (
-    <section
-      id="about"
-      ref={ref}
-      className={`min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden transition-opacity duration-700 ${
-        isVisible ? "opacity-100" : "opacity-0"
-      }`}
-    >
-      <div className="max-w-6xl w-full flex flex-col md:flex-row items-center gap-12 relative z-10">
-        {/* Text Content */}
-        <div className="flex-1 space-y-6">
-          {/* Typewriter Name */}
-          <h2 className="text-5xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-            {typedName}
-            <span
-              className={`inline-block w-[3px] h-[1em] bg-indigo-400 ml-1 align-middle ${
-                nameComplete ? "opacity-0" : "animate-pulse"
-              }`}
-            />
-          </h2>
-
-          {/* Paragraphs - staggered fade in after name completes */}
-          <p
-            className={`text-xl text-gray-300 leading-relaxed transition-all duration-700 ${
-              nameComplete
-                ? "translate-y-0 opacity-100"
-                : "translate-y-6 opacity-0"
-            }`}
-          >
-            I'm a first-year Science student at the University of British
-            Columbia, looking to specialize in Computer Science. I have a
-            passion for building immersive experiences and solving real-world
-            problems through code.
-          </p>
-          <p
-            className={`text-xl text-gray-300 leading-relaxed transition-all duration-700 ${
-              nameComplete
-                ? "translate-y-0 opacity-100"
-                : "translate-y-6 opacity-0"
-            }`}
-            style={{ transitionDelay: nameComplete ? "150ms" : "0ms" }}
-          >
-            I've won hackathons building VR apps with Unity, worked with EEG
-            data for brain-computer interfaces, and I'm currently exploring
-            full-stack development and machine learning.
-          </p>
-          <p
-            className={`text-xl text-gray-300 leading-relaxed transition-all duration-700 ${
-              nameComplete
-                ? "translate-y-0 opacity-100"
-                : "translate-y-6 opacity-0"
-            }`}
-            style={{ transitionDelay: nameComplete ? "300ms" : "0ms" }}
-          >
-            When I'm not coding or studying, you can find me playing sports,
-            video games, hanging out with friends, or watching shows and movies.
-          </p>
-        </div>
-
-        {/* Photo - slides in after name completes */}
+    <>
+      {/* Hero */}
+      <section
+        id="about"
+        ref={ref}
+        style={{
+          paddingTop: "8rem",
+          paddingBottom: "5rem",
+          paddingLeft: "2rem",
+          paddingRight: "2rem",
+          maxWidth: "760px",
+          opacity: isVisible ? 1 : 0,
+          transition: "opacity 0.7s",
+        }}
+      >
         <div
-          className={`flex-shrink-0 transition-all duration-1000 ${
-            nameComplete
-              ? "translate-x-0 opacity-100"
-              : "translate-x-16 opacity-0"
-          }`}
-          style={{ transitionDelay: nameComplete ? "100ms" : "0ms" }}
+          style={{
+            fontSize: "11px",
+            color: "#444",
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            marginBottom: "1.75rem",
+          }}
         >
-          <div className="w-72 h-72 md:w-96 md:h-96 rounded-2xl bg-gradient-to-br from-blue-500 via-indigo-500 to-blue-600 flex items-center justify-center text-9xl shadow-2xl shadow-blue-500/30 hover:shadow-indigo-500/50 transition-all duration-500 hover:scale-105 hover:rotate-2">
-            <img
-              src="/mePhoto.jpg"
-              alt="Nicholas Huang"
-              className="w-full h-full object-cover rounded-2xl"
-            />
-          </div>
-          <p className="text-center text-gray-400 text-sm mt-3">^ me! ^</p>
+          based in Vancouver, BC
         </div>
-      </div>
-    </section>
+
+        <h1
+          style={{
+            fontFamily: "'Instrument Serif', serif",
+            fontSize: "clamp(40px, 6vw, 64px)",
+            lineHeight: 1.05,
+            color: "#e8e4dc",
+            marginBottom: "1.25rem",
+          }}
+        >
+          {typedName.split("nick.")[0]}
+          {typedName.includes("nick.") && (
+            <em style={{ fontStyle: "italic", color: "#a89880" }}>nick.</em>
+          )}
+          <span
+            style={{
+              display: "inline-block",
+              width: "2px",
+              height: "0.85em",
+              background: "#a89880",
+              marginLeft: "4px",
+              verticalAlign: "middle",
+              opacity: nameComplete ? 0 : 1,
+              animation: nameComplete ? "none" : "blink 1s step-end infinite",
+            }}
+          />
+        </h1>
+
+        <style>{`@keyframes blink { 50% { opacity: 0; } }`}</style>
+
+        <p
+          style={{
+            fontSize: "16px",
+            color: "#666",
+            lineHeight: 1.85,
+            maxWidth: "480px",
+            marginBottom: "2.25rem",
+            opacity: nameComplete ? 1 : 0,
+            transform: nameComplete ? "translateY(0)" : "translateY(10px)",
+            transition: "opacity 0.6s, transform 0.6s",
+          }}
+        >
+          First-year CS & Statistics student at UBC. I build things — full-stack
+          apps, ML models, VR experiences. 4.33 GPA, hackathon placements,
+          always working on something.
+        </p>
+
+        <div
+          style={{
+            display: "flex",
+            gap: "1rem",
+            opacity: nameComplete ? 1 : 0,
+            transition: "opacity 0.6s 0.15s",
+          }}
+        >
+          <button
+            onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+            style={{
+              fontSize: "12px",
+              letterSpacing: "0.06em",
+              color: "#0c0c0c",
+              background: "#e8e4dc",
+              padding: "9px 22px",
+              border: "none",
+              cursor: "pointer",
+              fontFamily: "'DM Sans', sans-serif",
+              transition: "background 0.2s",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = "#d0ccc4")}
+            onMouseLeave={(e) => (e.currentTarget.style.background = "#e8e4dc")}
+          >
+            view projects
+          </button>
+          <button
+            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+            style={{
+              fontSize: "12px",
+              letterSpacing: "0.06em",
+              color: "#555",
+              background: "none",
+              border: "none",
+              borderBottom: "1px solid #2a2a2a",
+              paddingBottom: "2px",
+              cursor: "pointer",
+              fontFamily: "'DM Sans', sans-serif",
+              transition: "color 0.2s, border-color 0.2s",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = "#e8e4dc";
+              e.currentTarget.style.borderColor = "#555";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = "#555";
+              e.currentTarget.style.borderColor = "#2a2a2a";
+            }}
+          >
+            get in touch
+          </button>
+        </div>
+      </section>
+
+      <div style={{ height: "1px", background: "#1a1a1a", margin: "0 2rem" }} />
+
+      {/* About */}
+      <section style={{ padding: "3.5rem 2rem" }}>
+        <div
+          style={{
+            fontSize: "11px",
+            color: "#444",
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            marginBottom: "2rem",
+          }}
+        >
+          about
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 180px",
+            gap: "3rem",
+            alignItems: "start",
+            maxWidth: "760px",
+          }}
+        >
+          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+            {[
+              <>I'm a first-year student at the <span style={{ color: "#a89880" }}>University of British Columbia</span>, working toward a degree in Computer Science and Statistics.</>,
+              <>I got into programming through hackathons — building a VR gym simulator, a brainwave-driven meditation game, and most recently a volunteer matching platform for BC nonprofits that <span style={{ color: "#a89880" }}>placed 2nd at youCode 2026</span>.</>,
+              <>Outside of building things: I coach badminton, play chess, and watch too many shows.</>,
+            ].map((text, i) => (
+              <p key={i} style={{ fontSize: "15px", color: "#666", lineHeight: 1.85 }}>
+                {text}
+              </p>
+            ))}
+          </div>
+
+          <div style={{ textAlign: "center" }}>
+            <div
+              style={{
+                width: "150px",
+                height: "150px",
+                background: "#181818",
+                border: "1px solid #1e1e1e",
+                overflow: "hidden",
+                margin: "0 auto 0.5rem",
+              }}
+            >
+              <img
+                src="/mePhoto.jpg"
+                alt="Nicholas Huang"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </div>
+            <span style={{ fontSize: "11px", color: "#333", letterSpacing: "0.04em" }}>
+              ^ me! ^
+            </span>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

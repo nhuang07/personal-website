@@ -1,263 +1,326 @@
-import useScrollAnimation from "./Scroll";
 import { useState } from "react";
-import {
-  FaGithub,
-  FaExternalLinkAlt,
-  FaChevronLeft,
-  FaChevronRight,
-} from "react-icons/fa";
 
-export default function Projects() {
-  const [ref, isVisible] = useScrollAnimation();
-  const [currentIndex, setCurrentIndex] = useState(0);
+const projects = [
+  {
+    num: "01",
+    title: "match-a",
+    award: "2nd place — youCode 2026 SAP challenge",
+    description:
+      "Volunteer lifecycle platform for BC nonprofits. Weighted matching algorithm scoring compatibility across skills, availability, and location. Churn prediction, Supabase Realtime subscriptions, matcha-themed UI.",
+    tech: ["Next.js", "TypeScript", "Supabase", "TailwindCSS", "Vercel"],
+    image: "/project_photos/fantasy-assistant-bg.png",
+    github: "https://github.com/nhuang07/match-a",
+    live: "https://match-a-seven.vercel.app/",
+  },
+  {
+    num: "02",
+    title: "NBA Fantasy Assistant",
+    award: null,
+    description:
+      "Full-stack fantasy basketball analysis with JWT auth, roster management, start/sit recommendations, and real-time NBA data via external APIs. Caching layer to reduce API costs and improve response times.",
+    tech: ["React", "Node.js", "Express.js", "MongoDB", "JWT", "TailwindCSS"],
+    image: "/project_photos/fantasy-assistant-bg.png",
+    github: "https://github.com/nhuang07/nba-fantasy-helper",
+    live: "https://fantasy-assistant.netlify.app/",
+  },
+  {
+    num: "03",
+    title: "Subscription Status Classifier",
+    award: null,
+    description:
+      "ML model using KNN classification to predict newsletter subscription likelihood from Minecraft server data. Feature preprocessing, cross-validation, and parameter tuning in R.",
+    tech: ["R", "KNN", "Tidymodels", "Tidyverse"],
+    image: "/project_photos/subscription.png",
+    github: "https://github.com/nhuang07/Subscription-Status-Predictor",
+    live: null,
+  },
+  {
+    num: "04",
+    title: "MindMedVR",
+    award: "3rd place junior track — natHacks 2024",
+    description:
+      "VR meditation game using real-time EEG brainwave data to help healthcare professionals improve focus. Detects alpha, delta, and beta waves to dynamically adjust gameplay based on stress levels.",
+    tech: ["Unity", "C#", "Python", "OpenBCI", "VR"],
+    image: "/project_photos/mindmedvr.jpg",
+    github: "https://github.com/nhuang07/MindMedVR",
+    live: "https://devpost.com/software/mindmedvr",
+  },
+  {
+    num: "05",
+    title: "GYM SIM",
+    award: "1st place — Hack and Seek XR Hackathon 2024",
+    description:
+      "VR gym simulation focused on rehabilitation and proper form. Uses haptic feedback to provide corrective input on exercise form in real-time.",
+    tech: ["Unity", "C#", "VR"],
+    image: "/project_photos/gymsim.jpg",
+    github: "https://github.com/nhuang07/gymsim",
+    live: null,
+  },
+];
 
-  const projects = [
-    {
-      title: "NBA Fantasy Assistant",
-      description:
-        "An assistant for NBA fantasy leagues, with custom scoring input, sit / start recommendations, data persistence with roster saving, and user authentication. Implements CRUD operations to pull live data from SportsData.io's API, and Highlightly's API.",
-      tech: [
-        "React.js",
-        "Node.js",
-        "Express.js",
-        "JWT",
-        "TailwindCSS",
-        "REST APIs",
-        "MongoDB",
-      ],
-      award: null,
-      image: (
-        <img
-          src="/project_photos/fantasy-assistant-bg.png"
-          alt="Fantasy Assistant"
-          className="w-full h-full object-cover"
-        />
-      ),
-      github: "https://github.com/nhuang07/nba-fantasy-helper",
-      live: "https://fantasy-assistant.netlify.app/",
-    },
-    {
-      title: "DermAI",
-      description:
-        "Skincare analysis app, utilizing API calls to Google Gemini's API, and generating structured, reliable AI skincare recommendations. Implemented Google OAuth in order to store scan history for each user. Built during JourneyHacks 2026.",
-      tech: [
-        "React.js",
-        "Next.js",
-        "Supabase",
-        "Google Gemini API",
-        "TailwindCSS",
-      ],
-      award: null,
-      image: (
-        <img
-          src="/project_photos/dermai-bg.png"
-          alt="DermAI"
-          className="w-full h-full object-cover"
-        />
-      ),
-      github: "https://github.com/nhuang07/dermai",
-      live: "https://dermai-gray.vercel.app/",
-    },
-    {
-      title: "Wedoo",
-      description:
-        "Built for nwHacks 2026, Wedoo is a habit tracker you can share with your friends. Either AI can generate tasks for you, or you can create tasks for yourself, and you and your friends work together to take care of your own Wedoo by completing your tasks on time.",
-      tech: [
-        "React Native",
-        "Expo",
-        "Typescript",
-        "Supabase",
-        "Google Gemini API",
-        "Expo Push Notifications",
-      ],
-      award: null,
-      image: (
-        <img
-          src="/project_photos/wedoo.jpg"
-          alt="Wedoo"
-          className="w-full h-full object-cover"
-        />
-      ),
-      github: "https://github.com/nhuang07/wedoo",
-      live: "https://devpost.com/software/wedoo",
-    },
-    {
-      title: "MindMedVR",
-      description:
-        "VR meditation game using EEG brainwave data, designed to help healthcare professionals improve focus. Detects alpha, delta, and beta waves in real-time to dynamically adjust gameplay based on stress levels.",
-      tech: ["Python", "C#", "Unity", "OpenBCI", "VR"],
-      award: "3rd Place Junior Track - natHacks 2024",
-      image: (
-        <img
-          src="/project_photos/mindmedvr.jpg"
-          alt="MindMedVR"
-          className="w-full h-full object-cover"
-        />
-      ),
-      github: "https://github.com/nhuang07/MindMedVR",
-      live: "https://devpost.com/software/mindmedvr",
-    },
-    {
-      title: "Newsletter Subscription Predictor",
-      description:
-        "ML model using KNN classification to predict newsletter subscription likelihood based on user playtime and demographics from Minecraft server data.",
-      tech: ["R", "KNN Classification", "Tidymodels"],
-      award: null,
-      image: (
-        <img
-          src="/project_photos/subscription.png"
-          alt="Subscription Classifier"
-          className="w-full h-full object-cover"
-        />
-      ),
-      github: "https://github.com/nhuang07/Subscription-Status-Predictor",
-      live: null,
-    },
-    {
-      title: "GYM SIM",
-      description:
-        "VR gym simulation focused on rehabilitation and proper form. Uses haptic feedback to provide corrective input on exercise form.",
-      tech: ["C#", "Unity", "VR"],
-      award: "1st Place - Hack and Seek XR Hackathon 2024",
-      image: (
-        <img
-          src="/project_photos/gymsim.jpg"
-          alt="GymSim"
-          className="w-full h-full object-cover"
-        />
-      ),
-      github: "https://github.com/nhuang07/gymsim",
-      live: null,
-    },
-  ];
-
-  const prevProject = () => {
-    setCurrentIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
-  };
-
-  const nextProject = () => {
-    setCurrentIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
-  };
+function ProjectRow({ project }) {
+  const [hovered, setHovered] = useState(false);
 
   return (
-    <section
-      id="projects"
-      ref={ref}
-      className={`min-h-screen px-4 sm:px-6 py-16 sm:py-20 relative overflow-hidden transition-opacity duration-1000 ${
-        isVisible ? "opacity-100" : "opacity-0"
-      }`}
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        borderBottom: "1px solid #1a1a1a",
+        overflow: "hidden",
+        cursor: "default",
+      }}
     >
-      <div className="max-w-4xl mx-auto relative z-10">
-        <h2
-          className={`text-3xl sm:text-4xl font-bold mb-10 sm:mb-16 text-center bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent transition-all duration-1000 delay-200 ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
-          }`}
+      {/* Collapsed row */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "40px 1fr auto",
+          gap: "1rem",
+          alignItems: "center",
+          padding: "1.1rem 0",
+        }}
+      >
+        <span
+          style={{
+            fontFamily: "'Instrument Serif', serif",
+            fontSize: "11px",
+            color: "#333",
+          }}
         >
-          Projects
-        </h2>
+          {project.num}
+        </span>
 
-        <div className="relative">
-          {/* Desktop arrows - hidden on mobile */}
-          <button
-            onClick={prevProject}
-            className="hidden md:block absolute -left-16 top-1/2 -translate-y-1/2 z-20 p-3 bg-slate-800/80 hover:bg-slate-700 rounded-full border border-blue-400/30 hover:border-indigo-400/60 transition-all duration-300 hover:scale-110"
-          >
-            <FaChevronLeft className="text-xl text-white" />
-          </button>
-
+        <div>
           <div
-            key={currentIndex}
-            className="animate-fadeIn bg-slate-800/60 backdrop-blur-sm rounded-2xl border border-blue-400/20 shadow-2xl shadow-blue-500/10 overflow-hidden"
+            style={{
+              fontSize: "15px",
+              color: hovered ? "#e8e4dc" : "#c8c4bc",
+              fontWeight: 400,
+              marginBottom: "3px",
+              transition: "color 0.2s",
+            }}
           >
-            <div className="h-80 sm:h-90 bg-gradient-to-br from-blue-500 via-indigo-500 to-blue-600 flex items-center justify-center text-6xl sm:text-8xl">
-              {projects[currentIndex].image}
+            {project.title}
+          </div>
+          {project.award && (
+            <div style={{ fontSize: "11px", color: "#6a5f50", marginBottom: "5px" }}>
+              {project.award}
             </div>
-            <div className="p-5 sm:p-8">
-              {projects[currentIndex].award && (
-                <span className="inline-block px-3 py-1 bg-gradient-to-r from-blue-500 to-indigo-500 text-xs sm:text-sm rounded-full mb-3 sm:mb-4 text-white">
-                  {projects[currentIndex].award}
-                </span>
-              )}
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-3">
-                {projects[currentIndex].title}
-              </h3>
-              <p className="text-gray-300 text-sm sm:text-base mb-4 sm:mb-6 leading-relaxed">
-                {projects[currentIndex].description}
-              </p>
-              <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
-                {projects[currentIndex].tech.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="px-2 sm:px-3 py-1 bg-indigo-600/30 text-indigo-300 text-xs sm:text-sm rounded-full border border-indigo-500/30"
-                  >
-                    {tech}
-                  </span>
-                ))}
+          )}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
+            {project.tech.map((t) => (
+              <span
+                key={t}
+                style={{
+                  fontSize: "10px",
+                  color: "#444",
+                  border: "1px solid #1e1e1e",
+                  padding: "2px 7px",
+                  letterSpacing: "0.02em",
+                }}
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ display: "flex", gap: "10px" }}>
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontSize: "11px",
+              color: "#444",
+              letterSpacing: "0.04em",
+              transition: "color 0.2s",
+            }}
+            onMouseEnter={(e) => (e.target.style.color = "#e8e4dc")}
+            onMouseLeave={(e) => (e.target.style.color = "#444")}
+          >
+            GitHub
+          </a>
+          {project.live && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: "11px",
+                color: "#444",
+                letterSpacing: "0.04em",
+                transition: "color 0.2s",
+              }}
+              onMouseEnter={(e) => (e.target.style.color = "#e8e4dc")}
+              onMouseLeave={(e) => (e.target.style.color = "#444")}
+            >
+              Live ↗
+            </a>
+          )}
+        </div>
+      </div>
+
+      {/* Expanded panel */}
+      <div
+        style={{
+          height: hovered ? "240px" : "0",
+          overflow: "hidden",
+          transition: "height 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+          background: "#0f0f0f",
+          borderTop: hovered ? "1px solid #1a1a1a" : "none",
+        }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 320px",
+            height: "240px",
+          }}
+        >
+          {/* Left: text content */}
+          <div
+            style={{
+              padding: "1.5rem 2rem 1.5rem 40px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              gap: "0.6rem",
+            }}
+          >
+            <div
+              style={{
+                fontFamily: "'Instrument Serif', serif",
+                fontStyle: "normal",
+                fontSize: "22px",
+                color: "#e8e4dc",
+                fontWeight: 400,
+              }}
+            >
+              {project.title}
+            </div>
+            {project.award && (
+              <div style={{ fontSize: "11px", color: "#a89880", letterSpacing: "0.06em" }}>
+                {project.award}
               </div>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            )}
+            <p style={{ fontSize: "13px", color: "#777", lineHeight: 1.75, maxWidth: "420px" }}>
+              {project.description}
+            </p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "5px", marginTop: "0.25rem" }}>
+              {project.tech.map((t) => (
+                <span
+                  key={t}
+                  style={{
+                    fontSize: "10px",
+                    color: "#555",
+                    border: "1px solid #222",
+                    padding: "2px 7px",
+                    letterSpacing: "0.02em",
+                  }}
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+            <div style={{ display: "flex", gap: "10px", marginTop: "0.25rem" }}>
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontSize: "11px",
+                  color: "#555",
+                  border: "1px solid #222",
+                  padding: "4px 12px",
+                  letterSpacing: "0.04em",
+                  transition: "all 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.color = "#e8e4dc";
+                  e.target.style.borderColor = "#555";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.color = "#555";
+                  e.target.style.borderColor = "#222";
+                }}
+              >
+                GitHub
+              </a>
+              {project.live && (
                 <a
-                  href={projects[currentIndex].github}
+                  href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 rounded-lg border border-indigo-400/30 hover:border-blue-400/60 transition-all duration-300"
+                  style={{
+                    fontSize: "11px",
+                    color: "#555",
+                    border: "1px solid #222",
+                    padding: "4px 12px",
+                    letterSpacing: "0.04em",
+                    transition: "all 0.2s",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.color = "#e8e4dc";
+                    e.target.style.borderColor = "#555";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.color = "#555";
+                    e.target.style.borderColor = "#222";
+                  }}
                 >
-                  <FaGithub className="text-lg" />
-                  <span>GitHub</span>
+                  Live ↗
                 </a>
-                {projects[currentIndex].live && (
-                  <a
-                    href={projects[currentIndex].live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 rounded-lg transition-all duration-300"
-                  >
-                    <FaExternalLinkAlt />
-                    <span>Live Demo</span>
-                  </a>
-                )}
-              </div>
+              )}
             </div>
           </div>
 
-          {/* Desktop arrows - hidden on mobile */}
-          <button
-            onClick={nextProject}
-            className="hidden md:block absolute -right-16 top-1/2 -translate-y-1/2 z-20 p-3 bg-slate-800/80 hover:bg-slate-700 rounded-full border border-blue-400/30 hover:border-indigo-400/60 transition-all duration-300 hover:scale-110"
+          {/* Right: project image */}
+          <div
+            style={{
+              overflow: "hidden",
+              borderLeft: "1px solid #1a1a1a",
+            }}
           >
-            <FaChevronRight className="text-xl text-white" />
-          </button>
-        </div>
-
-        {/* Mobile arrows - below card */}
-        <div className="flex md:hidden justify-center gap-6 mt-6">
-          <button
-            onClick={prevProject}
-            className="p-3 bg-slate-800/80 hover:bg-slate-700 rounded-full border border-blue-400/30 transition-all duration-300"
-          >
-            <FaChevronLeft className="text-xl text-white" />
-          </button>
-          <button
-            onClick={nextProject}
-            className="p-3 bg-slate-800/80 hover:bg-slate-700 rounded-full border border-blue-400/30 transition-all duration-300"
-          >
-            <FaChevronRight className="text-xl text-white" />
-          </button>
-        </div>
-
-        {/* Dot indicators */}
-        <div className="flex justify-center gap-3 mt-6 sm:mt-8">
-          {projects.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                index === currentIndex
-                  ? "bg-indigo-400 w-8"
-                  : "bg-slate-600 hover:bg-slate-500 w-2.5"
-              }`}
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                backgroundImage: `url('${project.image}')`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                filter: "brightness(0.6)",
+                transform: hovered ? "scale(1.04)" : "scale(1)",
+                transition: "transform 0.5s ease, filter 0.3s ease",
+              }}
             />
-          ))}
+          </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+export default function Projects() {
+  return (
+    <section id="projects" style={{ padding: "3.5rem 2rem" }}>
+      <div
+        style={{
+          fontSize: "11px",
+          color: "#444",
+          letterSpacing: "0.12em",
+          textTransform: "uppercase",
+          marginBottom: "2rem",
+        }}
+      >
+        projects
+      </div>
+
+      <div style={{ borderTop: "1px solid #1a1a1a" }}>
+        {projects.map((p) => (
+          <ProjectRow key={p.num} project={p} />
+        ))}
       </div>
     </section>
   );

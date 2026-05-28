@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -16,66 +16,90 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 w-full backdrop-blur-md z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-slate-900/95 border-b border-blue-500/30 shadow-lg shadow-blue-500/10"
-          : "bg-slate-900/80 border-b border-blue-500/20"
-      }`}
+      style={{
+        position: "fixed",
+        top: 0,
+        width: "100%",
+        zIndex: 50,
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "1.1rem 2rem",
+        borderBottom: "1px solid #1a1a1a",
+        background: scrolled ? "rgba(12,12,12,0.97)" : "rgba(12,12,12,0.85)",
+        backdropFilter: "blur(8px)",
+        transition: "background 0.3s",
+      }}
     >
-      <div className="max-w-6xl mx-auto px-4 md:px-6 py-3 md:py-4 flex justify-between items-center">
-        <h1 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-          NH
-        </h1>
-        <div className="flex items-center gap-3 md:gap-6 text-sm md:text-base">
+      <span
+        style={{
+          fontFamily: "'DM Sans', sans-serif",
+          fontWeight: 300,
+          fontSize: "14px",
+          color: "#666",
+          letterSpacing: "0.06em",
+        }}
+      >
+        nick huang
+      </span>
+
+      <div style={{ display: "flex", alignItems: "center", gap: "1.75rem" }}>
+        {["about", "projects", "skills", "contact"].map((section) => (
           <button
-            onClick={() => scrollToSection("about")}
-            className="text-gray-300 hover:text-blue-400 transition-all duration-300 hover:scale-110"
+            key={section}
+            onClick={() => scrollToSection(section)}
+            style={{
+              fontSize: "13px",
+              color: "#555",
+              letterSpacing: "0.04em",
+              transition: "color 0.2s",
+            }}
+            onMouseEnter={(e) => (e.target.style.color = "#e8e4dc")}
+            onMouseLeave={(e) => (e.target.style.color = "#555")}
           >
-            About
+            {section}
           </button>
-          <button
-            onClick={() => scrollToSection("skills")}
-            className="text-gray-300 hover:text-indigo-400 transition-all duration-300 hover:scale-110"
-          >
-            Skills
-          </button>
-          <button
-            onClick={() => scrollToSection("projects")}
-            className="text-gray-300 hover:text-blue-400 transition-all duration-300 hover:scale-110"
-          >
-            Projects
-          </button>
-          <button
-            onClick={() => scrollToSection("contact")}
-            className="text-gray-300 hover:text-indigo-400 transition-all duration-300 hover:scale-110"
-          >
-            Contact
-          </button>
+        ))}
+
+        <a
+          href="/Nicholas_Huang_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            fontSize: "12px",
+            color: "#e8e4dc",
+            border: "1px solid #2a2a2a",
+            padding: "5px 14px",
+            letterSpacing: "0.04em",
+            transition: "border-color 0.2s",
+          }}
+          onMouseEnter={(e) => (e.target.style.borderColor = "#555")}
+          onMouseLeave={(e) => (e.target.style.borderColor = "#2a2a2a")}
+        >
+          resume ↗
+        </a>
+
+        <div style={{ display: "flex", gap: "0.75rem", paddingLeft: "0.5rem", borderLeft: "1px solid #1e1e1e" }}>
           <a
-            href="/Nicholas_Huang_Resume.pdf"
+            href="https://github.com/nhuang07"
             target="_blank"
-            className="text-gray-300 hover:text-blue-400 transition-all duration-300 hover:scale-110"
+            rel="noopener noreferrer"
+            style={{ color: "#444", fontSize: "18px", transition: "color 0.2s" }}
+            onMouseEnter={(e) => (e.target.style.color = "#e8e4dc")}
+            onMouseLeave={(e) => (e.target.style.color = "#444")}
           >
-            Resume
+            <FaGithub />
           </a>
-          <div className="flex items-center gap-2 md:gap-3 md:ml-2 md:pl-3 md:border-l border-gray-700">
-            <a
-              href="https://github.com/nhuang07"
-              target="_blank"
-              className="text-xl md:text-2xl hover:text-blue-400 transition-all duration-300 hover:scale-110"
-              title="GitHub"
-            >
-              <FaGithub />
-            </a>
-            <a
-              href="https://linkedin.com/in/nickhua"
-              target="_blank"
-              className="text-2xl hover:text-indigo-400 transition-all duration-300 hover:scale-110"
-              title="LinkedIn"
-            >
-              <FaLinkedin />
-            </a>
-          </div>
+          <a
+            href="https://linkedin.com/in/nickhua"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#444", fontSize: "18px", transition: "color 0.2s" }}
+            onMouseEnter={(e) => (e.target.style.color = "#e8e4dc")}
+            onMouseLeave={(e) => (e.target.style.color = "#444")}
+          >
+            <FaLinkedin />
+          </a>
         </div>
       </div>
     </nav>
