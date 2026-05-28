@@ -62,7 +62,7 @@ export default function Navbar() {
         ))}
 
         <a
-          href="/Nicholas_Huang_Resume.pdf"
+          href="/Updated_Nicholas_Huang_Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
           style={{
@@ -79,12 +79,23 @@ export default function Navbar() {
           resume ↗
         </a>
 
-        <div style={{ display: "flex", gap: "0.75rem", paddingLeft: "0.5rem", borderLeft: "1px solid #1e1e1e" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: "0.75rem",
+            paddingLeft: "0.5rem",
+            borderLeft: "1px solid #1e1e1e",
+          }}
+        >
           <a
             href="https://github.com/nhuang07"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: "#444", fontSize: "18px", transition: "color 0.2s" }}
+            style={{
+              color: "#444",
+              fontSize: "18px",
+              transition: "color 0.2s",
+            }}
             onMouseEnter={(e) => (e.target.style.color = "#e8e4dc")}
             onMouseLeave={(e) => (e.target.style.color = "#444")}
           >
@@ -94,7 +105,11 @@ export default function Navbar() {
             href="https://linkedin.com/in/nickhua"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: "#444", fontSize: "18px", transition: "color 0.2s" }}
+            style={{
+              color: "#444",
+              fontSize: "18px",
+              transition: "color 0.2s",
+            }}
             onMouseEnter={(e) => (e.target.style.color = "#e8e4dc")}
             onMouseLeave={(e) => (e.target.style.color = "#444")}
           >
