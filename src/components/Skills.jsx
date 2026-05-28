@@ -6,10 +6,8 @@ const skillGroups = [
     items: [
       { name: "Java", icon: "/logo_photos/java.svg" },
       { name: "Python", icon: "/logo_photos/python.svg" },
-      { name: "C#", icon: "/logo_photos/csharp.png" },
       { name: "JavaScript", icon: "/logo_photos/javascript.svg" },
       { name: "TypeScript", icon: "/logo_photos/typescript.svg" },
-      { name: "Lua", icon: "/logo_photos/lua.png" },
       { name: "R", icon: "/logo_photos/r.png" },
       { name: "Racket", icon: "/logo_photos/racket.svg" },
       { name: "HTML", icon: "/logo_photos/html.svg" },
@@ -44,7 +42,6 @@ const skillGroups = [
     ],
   },
 ];
-
 
 const wrap = {
   maxWidth: "1100px",
@@ -93,45 +90,51 @@ export default function Skills() {
       }}
     >
       <div style={wrap}>
-      <div
-        style={{
-          fontSize: "13px",
-          fontWeight: 500,
-          color: "#888",
-          letterSpacing: "0.1em",
-          textTransform: "uppercase",
-          marginBottom: "3rem",
-          paddingBottom: "1rem",
-          borderBottom: "1px solid #1e1e1e",
-        }}
-      >
-        skills
-      </div>
+        <div
+          style={{
+            fontSize: "13px",
+            fontWeight: 500,
+            color: "#888",
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            marginBottom: "3rem",
+            paddingBottom: "1rem",
+            borderBottom: "1px solid #1e1e1e",
+          }}
+        >
+          skills
+        </div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "2.25rem" }}>
-        {skillGroups.map((group) => (
-          <div key={group.label}>
-            <div
-              style={{
-                fontSize: "11px",
-                color: "#444",
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-                marginBottom: "0.9rem",
-                paddingBottom: "0.5rem",
-                borderBottom: "1px solid #1a1a1a",
-              }}
-            >
-              {group.label}
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "2.25rem" }}
+        >
+          {skillGroups.map((group) => (
+            <div key={group.label}>
+              <div
+                style={{
+                  fontSize: "11px",
+                  color: "#444",
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  marginBottom: "0.9rem",
+                  paddingBottom: "0.5rem",
+                  borderBottom: "1px solid #1a1a1a",
+                }}
+              >
+                {group.label}
+              </div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+                {group.items.map((skill) => (
+                  <SkillChip
+                    key={skill.name}
+                    name={skill.name}
+                    icon={skill.icon}
+                  />
+                ))}
+              </div>
             </div>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-              {group.items.map((skill) => (
-                <SkillChip key={skill.name} name={skill.name} icon={skill.icon} />
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
       </div>
     </section>
   );
